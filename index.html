@@ -19,6 +19,7 @@
         .chart-container { position: relative; width: 100%; max-width: 450px; margin: auto; height: 350px; }
         #menu-toggle:checked ~ #side-menu { transform: translateX(0); }
         .btn-toggle-active { border-color: #7c2d12; background-color: rgba(124, 45, 18, 0.1); color: #7c2d12; }
+        .qr-gradient { background: linear-gradient(135deg, #f5f5f4 0%, #fcfaf7 100%); }
     </style>
 </head>
 <body class="antialiased">
@@ -47,19 +48,19 @@
 
     <header class="min-h-screen flex flex-col justify-center items-center text-center p-6 hero-zen">
         <p class="text-stone-500 text-xs tracking-[0.6em] mb-4 font-bold uppercase">Anma • Shiatsu • Zen Stretching</p>
-        <h1 class="text-5xl md:text-8xl font-bold mb-4 tracking-tighter text-stone-900 leading-none">MASAJE<br>JAPONÉS</h1>
+        <h1 class="text-5xl md:text-8xl font-bold mb-4 tracking-tighter text-stone-900 leading-none italic uppercase">MASAJE<br>JAPONÉS</h1>
         <div class="w-24 h-px bg-stone-300 mb-8"></div>
         <p class="text-lg md:text-xl text-stone-600 max-w-2xl mb-12 font-light italic">"Terapia de rehabilitación y equilibrio bajo la maestría de Gastón Burgos."</p>
         <div class="flex flex-col md:flex-row gap-4">
-            <button onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})" class="bg-stone-900 text-white px-10 py-4 uppercase font-bold text-[10px] tracking-widest hover:bg-stone-700 transition shadow-xl">Consultar Abonos</button>
-            <button onclick="document.getElementById('diagnostico').scrollIntoView({behavior:'smooth'})" class="bg-white border border-stone-200 text-stone-900 px-10 py-4 uppercase font-bold text-[10px] tracking-widest hover:bg-stone-50 transition">Identificar Dolor</button>
+            <button onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})" class="bg-stone-900 text-white px-10 py-4 uppercase font-bold text-[10px] tracking-widest hover:bg-stone-700 transition shadow-xl italic">Consultar Abonos</button>
+            <button onclick="document.getElementById('diagnostico').scrollIntoView({behavior:'smooth'})" class="bg-white border border-stone-200 text-stone-900 px-10 py-4 uppercase font-bold text-[10px] tracking-widest hover:bg-stone-50 transition italic">Identificar Dolor</button>
         </div>
     </header>
 
     <section class="py-24 px-6 bg-white border-y border-stone-100">
         <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
             <div>
-                <h2 class="text-3xl mb-8 text-stone-800 italic">Maestría Terapéutica</h2>
+                <h2 class="text-3xl mb-8 text-stone-800 italic uppercase">Maestría Terapéutica</h2>
                 <p class="text-stone-500 mb-10 text-sm leading-relaxed">No es solo relajación. Es una técnica de rehabilitación milenaria adaptada a la biomecánica moderna. Compará el alcance de mi tratamiento:</p>
                 
                 <div class="flex gap-4 mb-8">
@@ -67,7 +68,7 @@
                     <button onclick="toggleDataset(1)" id="btn-ds1" class="btn-toggle-active border border-stone-200 px-4 py-2 text-[9px] font-bold uppercase tracking-widest transition">Masaje Común</button>
                 </div>
                 <div class="p-5 bg-stone-50 border-l-4 border-stone-900">
-                    <p class="text-stone-600 text-xs italic font-bold">"En 2021 fui nombrado Maestro en la Escuela Argentina de Shiatsu. Mi compromiso es tu recuperación real."</p>
+                    <p class="text-stone-600 text-xs italic font-bold italic">"En 2021 fui nombrado Maestro en la Escuela Argentina de Shiatsu. Mi compromiso es tu recuperación real."</p>
                 </div>
             </div>
             <div class="chart-container">
@@ -79,9 +80,7 @@
     <section id="diagnostico" class="py-24 px-6 bg-[#fcfaf7]">
         <div class="max-w-4xl mx-auto text-center">
             <h2 class="text-3xl mb-4 italic uppercase">Identificador de Malestar ✨</h2>
-            <p class="text-stone-500 mb-12 font-light text-sm italic">Seleccioná tu zona afectada para conocer el enfoque técnico sugerido.</p>
-            
-            <div class="bg-white p-8 rounded-sm border border-stone-100 text-left shadow-sm">
+            <div class="bg-white p-8 rounded-sm border border-stone-100 text-left shadow-sm mt-12">
                 <div class="grid md:grid-cols-2 gap-6 mb-8 text-stone-800">
                     <div class="flex flex-col">
                         <label class="text-[10px] uppercase tracking-widest text-stone-400 font-bold mb-2">Zona de Dolor</label>
@@ -89,18 +88,17 @@
                             <option value="Cervical / Cuello">Cervical / Cuello</option>
                             <option value="Lumbar / Espalda Baja">Lumbar / Espalda Baja</option>
                             <option value="Estrés / Insomnio">Estrés / Insomnio</option>
-                            <option value="Piernas Cansadas">Piernas Cansadas</option>
                         </select>
                     </div>
                     <div class="flex flex-col">
-                        <label class="text-[10px] uppercase tracking-widest text-stone-400 font-bold mb-2">Frecuencia</label>
+                        <label class="text-[10px] uppercase tracking-widest text-stone-400 font-bold mb-2">Tipo de Dolor</label>
                         <select id="input-freq" class="bg-stone-50 border-none rounded-sm p-3 text-sm focus:ring-1 focus:ring-stone-900 italic">
                             <option value="Dolor Crónico">Crónico (Meses/Años)</option>
                             <option value="Dolor Agudo">Agudo (Reciente)</option>
                         </select>
                     </div>
                 </div>
-                <button onclick="diagnose()" id="btn-diag" class="w-full bg-stone-900 py-4 font-bold uppercase text-[10px] tracking-[0.3em] text-white hover:bg-stone-700 transition">Ver Enfoque Terapéutico</button>
+                <button onclick="diagnose()" id="btn-diag" class="w-full bg-stone-900 py-4 font-bold uppercase text-[10px] tracking-[0.3em] text-white hover:bg-stone-700 transition italic">Ver Enfoque</button>
                 <div id="diag-output" class="mt-8"></div>
             </div>
         </div>
@@ -111,25 +109,23 @@
             <h2 class="text-4xl mb-16 italic font-bold uppercase tracking-tighter text-stone-900">Abonos Terapéuticos 2026</h2>
             <div class="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
                 <div class="bg-stone-50 p-10 border border-stone-100 rounded-sm flex flex-col hover:border-stone-900 transition duration-500">
-                    <h3 class="text-stone-400 font-bold mb-4 italic uppercase">Plan Inicial</h3>
-                    <div class="text-5xl font-bold mb-4 italic text-stone-900">$43.000</div>
-                    <p class="text-[10px] text-stone-500 font-bold uppercase mb-8 italic">Mantenimiento y Alivio</p>
+                    <h3 class="text-stone-400 font-bold mb-4 italic uppercase italic">Plan Inicial</h3>
+                    <div class="text-5xl font-bold mb-4 italic text-stone-900">$60.000</div>
                     <ul class="text-[11px] text-stone-500 space-y-4 mb-10 text-left flex-grow italic">
                         <li><i class="fas fa-check text-stone-900 mr-2"></i> Sesiones mensuales de rehabilitación</li>
                         <li><i class="fas fa-check text-stone-900 mr-2"></i> Seguimiento de evolución clínica</li>
-                        <li><i class="fas fa-check text-stone-900 mr-2"></i> Enfoque en Anma / Shiatsu Namikoshi</li>
+                        <li><i class="fas fa-check text-stone-900 mr-2"></i> Enfoque en Shiatsu Namikoshi</li>
                     </ul>
-                    <a href="https://wa.me/541176194825" class="block border border-stone-900 py-3 text-[10px] font-bold uppercase tracking-widest hover:bg-stone-900 hover:text-white transition italic">Reservar Turno</a>
+                    <a href="https://wa.me/541176194825" class="block border border-stone-900 py-3 text-[10px] font-bold uppercase tracking-widest hover:bg-stone-900 hover:text-white transition italic">Reservar</a>
                 </div>
                 <div class="bg-stone-900 p-10 border-2 border-stone-900 rounded-sm relative transform scale-105 shadow-2xl flex flex-col">
                     <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-stone-900 text-white text-[9px] px-4 py-1 font-bold uppercase tracking-widest italic border border-stone-700">Alta Recuperación</span>
-                    <h3 class="text-stone-400 font-bold mb-4 italic uppercase">Plan Pleno</h3>
-                    <div class="text-5xl font-bold mb-4 italic text-white">$54.000</div>
-                    <p class="text-stone-400 text-[10px] mb-8 uppercase tracking-widest font-bold italic">Tratamiento de Choque</p>
+                    <h3 class="text-stone-400 font-bold mb-4 italic uppercase italic">Plan Pleno</h3>
+                    <div class="text-5xl font-bold mb-4 italic text-white">$70.000</div>
                     <ul class="text-[11px] text-stone-300 space-y-4 mb-10 text-left font-bold italic flex-grow">
                         <li><i class="fas fa-star text-white mr-2"></i> Mayor frecuencia de tratamiento</li>
                         <li><i class="fas fa-star text-white mr-2"></i> <strong>Bonificación Zen Stretching</strong></li>
-                        <li><i class="fas fa-star text-white mr-2"></i> Rutinas de postura para el hogar</li>
+                        <li><i class="fas fa-star text-white mr-2"></i> Rutinas de postura personalizadas</li>
                     </ul>
                     <a href="https://wa.me/541176194825" class="block bg-white text-stone-900 py-4 text-[10px] font-bold uppercase tracking-widest hover:bg-stone-200 transition italic">Iniciar Tratamiento</a>
                 </div>
@@ -138,15 +134,15 @@
     </section>
 
     <footer class="py-24 px-6 bg-[#fcfaf7] text-center border-t border-stone-100">
-        <h2 class="text-4xl mb-16 italic tracking-tighter uppercase font-bold text-stone-900">Espacio INYO ☯️</h2>
+        <h2 class="text-4xl mb-16 italic tracking-tighter uppercase font-bold text-stone-900 italic">Espacio INYO ☯️</h2>
         <div class="grid md:grid-cols-2 gap-12 mb-20">
-            <div>
-                <img src="https://inyodo.github.io/espacio-inyo-web/imagen/IMG_4931.jpeg" alt="QR" class="w-32 h-32 mx-auto mb-4 object-contain grayscale">
-                <p class="text-[10px] uppercase font-bold text-stone-400">+54 11 7619-4825</p>
+            <div class="qr-gradient p-8 border border-stone-200 rounded-sm">
+                <img src="https://inyodo.github.io/espacio-inyo-web/imagen/IMG_4931.jpeg" alt="QR" class="w-32 h-32 mx-auto mb-4 object-contain">
+                <p class="text-[10px] uppercase font-bold text-stone-400 italic tracking-widest">WhatsApp: 11 7619-4825</p>
             </div>
             <div class="flex flex-col justify-center items-center md:items-start text-center md:text-left">
-                <p class="text-xs font-bold uppercase tracking-widest text-stone-900 mb-2">Sede Central</p>
-                <p class="text-xs text-stone-500 italic">Gdor. Carlos Tejedor 335, Lanús Oeste Centro.</p>
+                <p class="text-xs font-bold uppercase tracking-widest text-stone-900 mb-2 italic underline underline-offset-4">Lanús Oeste Centro</p>
+                <p class="text-xs text-stone-500 italic">Gdor. Carlos Tejedor 335.</p>
             </div>
         </div>
         <div class="border-t border-stone-200 pt-16 mt-16">
@@ -190,9 +186,9 @@
         function diagnose() {
             const out = document.getElementById('diag-output');
             const pain = document.getElementById('input-pain').value;
-            out.innerHTML = `<div class="bg-stone-50 p-6 border-l-4 border-stone-900 italic text-xs animate-pulse">Analizando zona biomecánica...</div>`;
+            out.innerHTML = `<div class="bg-stone-50 p-6 border-l-4 border-stone-900 italic text-xs animate-pulse">Analizando zona...</div>`;
             setTimeout(() => {
-                out.innerHTML = `<div class="bg-stone-50 p-6 border-l-4 border-stone-900"><h4 class="text-stone-900 font-bold uppercase text-[10px] mb-2 italic">Enfoque para ${pain}</h4><p class="text-stone-600 text-xs italic mb-2">Aplicaremos técnicas de <strong>Shiatsu Namikoshi</strong> y presión profunda para liberar el sistema nervioso.</p><p class="text-[9px] uppercase tracking-tighter text-stone-400 font-bold">Se recomienda iniciar tratamiento de 4 sesiones.</p></div>`;
+                out.innerHTML = `<div class="bg-stone-50 p-6 border-l-4 border-stone-900 shadow-sm"><h4 class="text-stone-900 font-bold uppercase text-[10px] mb-2 italic">Tratamiento para ${pain}</h4><p class="text-stone-600 text-xs italic mb-2">Utilizaremos presión profunda y estiramientos del <strong>Método Daiki</strong> para restaurar la movilidad.</p><p class="text-[9px] uppercase tracking-tighter text-stone-400 font-bold italic">Contactame para coordinar tu primer sesión de alivio real.</p></div>`;
             }, 800);
         }
     </script>
