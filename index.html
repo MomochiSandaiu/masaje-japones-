@@ -9,14 +9,23 @@
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         h1, h2, h3, .brand-font { font-family: 'Oswald', sans-serif; text-transform: uppercase; }
-        body { font-family: 'Lato', sans-serif; background-color: #fdfbf9; color: #2d2d2d; }
+        body { font-family: 'Lato', sans-serif; background-color: #fdfbf9; color: #2d2d2d; line-height: 1.6; }
+        
         .hero-masaje { 
-            background: linear-gradient(rgba(20, 20, 20, 0.6), rgba(20, 20, 20, 0.8)), 
+            background: linear-gradient(rgba(20, 20, 20, 0.7), rgba(20, 20, 20, 0.85)), 
             url('https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=1470&q=80'); 
             background-size: cover; background-position: center; 
+            min-height: 100vh;
         }
+
         #menu-toggle:checked ~ #side-menu { transform: translateX(0); }
         #menu-toggle:checked ~ #menu-overlay { display: block; }
+
+        .fade-in { opacity: 0; transform: translateY(20px); transition: all 0.8s ease-out; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+        .service-card { background: white; border: 1px solid #eee; transition: all 0.4s ease; }
+        .service-card:hover { border-color: #2d2d2d; transform: translateY(-5px); }
     </style>
 </head>
 <body class="antialiased">
@@ -34,7 +43,7 @@
         <label for="menu-toggle" class="absolute top-6 right-6 cursor-pointer text-stone-400 text-xl"><i class="fas fa-times"></i></label>
         <div class="mt-12">
             <p class="text-[10px] uppercase tracking-[0.3em] text-stone-400 mb-8 font-bold border-b border-stone-100 pb-2 italic">Espacio INYO ☯️</p>
-            <ul class="space-y-8 text-sm uppercase tracking-widest font-semibold">
+            <ul class="space-y-8 text-sm uppercase tracking-widest font-semibold italic">
                 <li><a href="#" class="block text-stone-900 font-bold underline underline-offset-8">Masaje Japonés</a></li>
                 <li><a href="https://inyodo.github.io/hiit-calistenia/" class="block hover:text-stone-600 transition">HIIT Calistenia</a></li>
                 <li><a href="https://inyodo.github.io/espacio-inyo-web/yoga.html" class="block hover:text-stone-600 transition">Clases de Yoga</a></li>
@@ -44,70 +53,85 @@
         </div>
     </nav>
 
-    <header class="min-h-screen flex flex-col justify-center items-center text-center p-6 hero-masaje text-white">
-        <p class="text-stone-300 text-xs tracking-[0.6em] mb-4 font-bold uppercase">Anma • Shiatsu Namikoshi • Tradición</p>
-        <h1 class="text-5xl md:text-8xl font-bold mb-4 tracking-tighter italic uppercase">Maestría en Masaje Japonés</h1>
-        <div class="w-24 h-px bg-white/30 mb-8"></div>
-        <p class="text-lg md:text-xl text-stone-200 max-w-2xl mb-12 font-light italic">"Transforma la salud, el bienestar y tu propósito de vida a través del equilibrio oriental."</p>
-        <button onclick="document.getElementById('info').scrollIntoView({behavior:'smooth'})" class="bg-white text-black px-12 py-4 uppercase font-bold text-[10px] tracking-widest hover:bg-stone-200 transition shadow-xl italic">Conocer el Método</button>
+    <header class="hero-masaje flex flex-col justify-center items-center text-center p-6 text-white">
+        <div class="fade-in visible">
+            <p class="text-stone-300 text-xs tracking-[0.6em] mb-4 font-bold uppercase">Anma • Shiatsu Namikoshi • Tradición</p>
+            <h1 class="text-5xl md:text-8xl font-bold mb-4 tracking-tighter italic uppercase leading-tight">Maestría en<br>Masaje Japonés</h1>
+            <div class="w-24 h-px bg-white/30 mx-auto my-8"></div>
+            <p class="text-lg md:text-xl text-stone-200 max-w-2xl mx-auto font-light italic">
+                "Formación profesional y sesiones terapéuticas bajo la visión integral de Gastón Burgos."
+            </p>
+            <button onclick="document.getElementById('formacion').scrollIntoView({behavior:'smooth'})" class="mt-10 bg-white text-black px-12 py-4 uppercase font-bold text-[10px] tracking-widest hover:bg-stone-200 transition shadow-xl italic">Explorar Formación</button>
+        </div>
     </header>
 
-    <section id="info" class="py-24 px-6 bg-white">
+    <section id="formacion" class="py-32 px-6 bg-white">
         <div class="max-w-4xl mx-auto">
-            <h2 class="text-center text-4xl mb-12 italic uppercase font-bold text-stone-900">El Camino hacia el Equilibrio</h2>
-            <p class="text-stone-600 text-lg leading-relaxed mb-16 italic text-center">Combinamos la tradición ancestral del <strong>Anma</strong> con la precisión científica del <strong>Shiatsu Namikoshi</strong> para ofrecer una formación que equilibra cuerpo, mente y energía.</p>
+            <h2 class="text-center text-4xl mb-16 italic uppercase font-bold text-stone-900">El Arte de la Sanación Manual</h2>
+            <p class="text-stone-600 text-lg leading-relaxed mb-12 italic text-center">
+                Nuestra maestría fusiona las técnicas milenarias del **Anma** con la precisión anatómica del **Shiatsu Namikoshi**. Formamos terapeutas capacitados para abordar el sistema neuromuscular y el equilibrio energético de manera profesional.
+            </p>
             
-            <div class="grid md:grid-cols-2 gap-12">
-                <div class="flex gap-4 items-start">
-                    <i class="fas fa-dharmachakra text-stone-900 mt-1"></i>
-                    <div>
-                        <h4 class="font-bold uppercase text-sm mb-2">Anma (El Origen)</h4>
-                        <p class="text-stone-500 text-sm italic">Técnica ancestral de fricción y movimiento articular para desbloquear la energía.</p>
-                    </div>
+            <div class="grid md:grid-cols-2 gap-10 mt-20">
+                <div class="service-card p-10 italic">
+                    <h3 class="text-xl font-bold mb-4 uppercase">Anma Tradicional</h3>
+                    <p class="text-stone-500 text-sm">Masaje ancestral enfocado en la fricción, presión y estiramiento para liberar la fatiga muscular y mejorar la circulación sanguínea.</p>
                 </div>
-                <div class="flex gap-4 items-start">
-                    <i class="fas fa-fingerprint text-stone-900 mt-1"></i>
-                    <div>
-                        <h4 class="font-bold uppercase text-sm mb-2">Shiatsu Namikoshi</h4>
-                        <p class="text-stone-500 text-sm italic">Método oficial basado en anatomía moderna para el tratamiento terapéutico preciso.</p>
-                    </div>
+                <div class="service-card p-10 italic">
+                    <h3 class="text-xl font-bold mb-4 uppercase">Shiatsu Namikoshi</h3>
+                    <p class="text-stone-500 text-sm">Técnica oficial reconocida en Japón que utiliza la presión de los pulgares para estimular la capacidad autocurativa del organismo.</p>
+                </div>
+                <div class="service-card p-10 italic">
+                    <h3 class="text-xl font-bold mb-4 uppercase">DAIKI & Zen Stretching</h3>
+                    <p class="text-stone-500 text-sm">Integración de estiramientos de meridianos y diagnosis para un tratamiento postural profundo y duradero.</p>
+                </div>
+                <div class="service-card p-10 italic">
+                    <h3 class="text-xl font-bold mb-4 uppercase">Diagnosis Terapéutica</h3>
+                    <p class="text-stone-500 text-sm">Aprendizaje de la lectura corporal para identificar bloqueos y proponer protocolos de tratamiento personalizados.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-24 px-6 bg-[#fdfbf9] border-y border-stone-100">
+    <section class="py-32 px-6 bg-[#fdfbf9] border-y border-stone-100">
         <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-3xl mb-12 italic uppercase font-bold text-stone-900 italic">Nuestra Trayectoria</h2>
-            <div class="space-y-8 text-left max-w-2xl mx-auto text-stone-600 italic italic">
-                <p>• <strong>Más de 20 Años de Experiencia:</strong> Fusión de Artes Marciales (2002) y conocimiento terapéutico japonés (2005).</p>
-                <p>• <strong>Certificación Internacional:</strong> Shiatsuterapeuta Namikoshi graduado con aval de Tokio, Japón.</p>
-                <p>• <strong>Maestro Formador:</strong> Más de 100 alumnos capacitados en técnicas de control articular y estrés.</p>
+            <h2 class="text-3xl mb-12 italic uppercase font-bold text-stone-900 italic">Maestro de Grado</h2>
+            <div class="space-y-8 text-left max-w-2xl mx-auto text-stone-600 italic">
+                <p>• <strong>Desde 2002:</strong> Formación ininterrumpida en disciplinas orientales y biomecánica.</p>
+                <p>• <strong>Certificación Internacional:</strong> Shiatsuterapeuta Namikoshi con aval de la Japan Shiatsu College.</p>
+                <p>• <strong>Maestría Profesional:</strong> Especialista en Anma, DAIKI, Zen Stretching y Amatsu Tatara.</p>
+            </div>
+            <div class="mt-16 italic">
+                <p class="text-stone-400 text-xs uppercase tracking-widest font-bold mb-4 italic">Ubicación de Sesiones y Cursos</p>
+                <p class="text-stone-900 font-bold uppercase italic">Espacio INYO - Lanús Oeste Centro</p>
             </div>
         </div>
     </section>
 
-    <footer class="py-24 px-6 bg-white text-center border-t border-stone-100">
+    <footer class="py-32 px-6 bg-white text-center border-t border-stone-100">
         <h2 class="text-4xl mb-16 italic tracking-tighter uppercase font-bold text-stone-900 italic">Espacio INYO ☯️</h2>
-        <div class="grid md:grid-cols-2 gap-12 mb-20">
+        
+        <div class="grid md:grid-cols-2 gap-12 mb-20 italic">
             <div>
                 <img src="https://inyodo.github.io/espacio-inyo-web/imagen/IMG_4931.jpeg" alt="QR" class="w-32 h-32 mx-auto mb-4 object-contain grayscale">
-                <p class="text-[10px] uppercase font-bold text-stone-400 italic tracking-widest italic italic underline underline-offset-4">WhatsApp: 11 7619-4825</p>
+                <p class="text-[10px] uppercase font-bold text-stone-400 tracking-widest underline underline-offset-4 decoration-stone-200">WhatsApp: 11 7619-4825</p>
             </div>
-            <div class="flex flex-col justify-center items-center md:items-start text-center md:text-left">
-                <p class="text-xs font-bold uppercase tracking-widest text-stone-900 mb-2 italic italic">Lanús Oeste Centro</p>
-                <p class="text-xs text-stone-500 italic italic">Gdor. Carlos Tejedor 335.</p>
+            <div class="flex flex-col justify-center items-center md:items-start text-center md:text-left italic">
+                <p class="text-xs font-bold uppercase tracking-widest text-stone-900 mb-2 italic">Sede Lanús Oeste Centro</p>
+                <p class="text-xs text-stone-500">Gdor. Carlos Tejedor 335.</p>
+                <p class="text-xs text-stone-500 mt-1">gastburgos@hotmail.com</p>
             </div>
         </div>
+
         <div class="border-t border-stone-200 pt-16 mt-16">
-            <h3 class="text-[10px] uppercase tracking-[0.6em] text-stone-400 mb-10 font-bold italic italic italic">ECOSISTEMA INYO</h3>
-            <div class="flex flex-wrap justify-center gap-10 italic text-stone-400 text-[10px] font-bold tracking-widest">
+            <h3 class="text-[10px] uppercase tracking-[0.6em] text-stone-400 mb-12 font-bold italic">ECOSISTEMA INYO</h3>
+            <div class="flex flex-wrap justify-center gap-x-12 gap-y-8 italic text-stone-400 text-[10px] font-bold tracking-widest italic">
                 <a href="https://inyodo.github.io/hiit-calistenia/" class="hover:text-stone-900 transition underline underline-offset-8">HIIT Calistenia</a>
                 <a href="https://inyodo.github.io/espacio-inyo-web/yoga.html" class="hover:text-stone-900 transition underline underline-offset-8">Clases de Yoga</a>
                 <a href="https://inyodo.github.io/espacio-inyo-web/zen-stretching.html" class="hover:text-stone-900 transition underline underline-offset-8">Zen Stretching</a>
                 <a href="https://inyodo.github.io/espacio-inyo-web/artes-marciales.html" class="hover:text-stone-900 transition underline underline-offset-8">Artes Marciales</a>
             </div>
-            <p class="mt-20 text-[9px] text-stone-300 uppercase tracking-widest font-bold">© 2026 Espacio INYO</p>
+            <p class="mt-20 text-[9px] text-stone-300 uppercase tracking-widest font-bold">© 2026 Espacio INYO | Maestría Terapéutica</p>
         </div>
     </footer>
 
@@ -115,5 +139,14 @@
         <i class="fab fa-whatsapp"></i>
     </a>
 
+    <script>
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, observerOptions);
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
 </body>
 </html>
