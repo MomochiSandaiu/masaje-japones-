@@ -3,158 +3,198 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maestría en Masaje Japonés | Gastón Burgos - Espacio INYO</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>Masaje Japonés | Maestro Gastón Burgos - Espacio INYO</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        h1, h2, h3 { font-family: 'Cinzel', serif; }
-        body { font-family: 'Lato', sans-serif; background-color: #fcfbf9; }
-        .zen-gradient { background: radial-gradient(circle at center, #FCFBF9 0%, #F5F1E8 100%); }
-        #menu-toggle:checked ~ #menu-overlay { display: block; }
+        h1, h2, h3, .brand-font { font-family: 'Cinzel', serif; text-transform: uppercase; }
+        body { font-family: 'Lato', sans-serif; background-color: #fcfaf7; color: #2d2d2d; }
+        .hero-zen { 
+            background: linear-gradient(rgba(252, 250, 247, 0.8), rgba(252, 250, 247, 0.95)), 
+            url('https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=1470&q=80'); 
+            background-size: cover; background-position: center; 
+        }
+        .chart-container { position: relative; width: 100%; max-width: 450px; margin: auto; height: 350px; }
         #menu-toggle:checked ~ #side-menu { transform: translateX(0); }
-        details summary { list-style: none; }
-        details summary::-webkit-details-marker { display: none; }
-        details[open] summary i { transform: rotate(180deg); }
-        details summary i { transition: transform 0.3s ease; }
+        .btn-toggle-active { border-color: #7c2d12; background-color: rgba(124, 45, 18, 0.1); color: #7c2d12; }
     </style>
 </head>
-<body class="text-stone-800 antialiased font-light">
+<body class="antialiased">
 
     <input type="checkbox" id="menu-toggle" class="hidden">
-    <label for="menu-toggle" class="fixed top-6 left-6 z-50 cursor-pointer bg-white/90 backdrop-blur-md p-3 shadow-md rounded-sm border border-stone-200">
-        <div class="w-6 h-0.5 bg-stone-800 mb-1.5 transition"></div>
-        <div class="w-6 h-0.5 bg-stone-800 mb-1.5 transition"></div>
-        <div class="w-6 h-0.5 bg-stone-800 transition"></div>
+    <label for="menu-toggle" class="fixed top-6 left-6 z-50 cursor-pointer bg-stone-900/5 backdrop-blur-md p-3 rounded-sm border border-stone-200 hover:bg-stone-900 hover:text-white transition duration-300">
+        <div class="w-6 h-0.5 bg-current mb-1.5 transition"></div>
+        <div class="w-6 h-0.5 bg-current mb-1.5 transition"></div>
+        <div class="w-6 h-0.5 bg-current transition"></div>
     </label>
 
-    <label id="menu-overlay" for="menu-toggle" class="fixed inset-0 bg-stone-900/40 backdrop-blur-sm z-40 hidden"></label>
+    <label id="menu-overlay" for="menu-toggle" class="fixed inset-0 bg-stone-900/20 backdrop-blur-sm z-40 hidden"></label>
 
-    <nav id="side-menu" class="fixed top-0 left-0 h-full w-72 bg-[#FCFBF9] z-50 shadow-2xl transform -translate-x-full transition-transform duration-300 ease-in-out p-12 flex flex-col">
+    <nav id="side-menu" class="fixed top-0 left-0 h-full w-72 bg-[#fcfaf7] z-50 shadow-2xl transform -translate-x-full transition-transform duration-300 ease-in-out p-12 flex flex-col border-r border-stone-100">
         <label for="menu-toggle" class="absolute top-6 right-6 cursor-pointer text-stone-400 text-xl"><i class="fas fa-times"></i></label>
         <div class="mt-12">
-            <p class="text-[10px] uppercase tracking-[0.3em] text-stone-400 mb-8 font-bold border-b border-stone-100 pb-2">Espacio INYO</p>
+            <p class="text-[10px] uppercase tracking-[0.3em] text-stone-400 mb-8 font-bold border-b border-stone-100 pb-2">Espacio INYO ☯️</p>
             <ul class="space-y-8 text-sm uppercase tracking-widest font-semibold">
-                <li><a href="#" class="block hover:text-stone-500 transition font-bold">Inicio (Masaje)</a></li>
-                <li><a href="https://inyodo.github.io/hiit-calistenia/" class="block hover:text-stone-500 transition">HIIT Calistenia</a></li>
-                <li><a href="https://inyodo.github.io/espacio-inyo-web/yoga.html" class="block hover:text-stone-500 transition">Clases de Yoga</a></li>
-                <li><a href="https://inyodo.github.io/espacio-inyo-web/artes-marciales.html" class="block hover:text-stone-500 transition">Artes Marciales</a></li>
+                <li><a href="#" class="block text-stone-900 font-bold underline underline-offset-8">Masaje Japonés</a></li>
+                <li><a href="https://inyodo.github.io/hiit-calistenia/" class="block hover:text-stone-600 transition">HIIT Calistenia</a></li>
+                <li><a href="https://inyodo.github.io/espacio-inyo-web/yoga.html" class="block hover:text-stone-600 transition">Clases de Yoga</a></li>
+                <li><a href="https://inyodo.github.io/espacio-inyo-web/artes-marciales.html" class="block hover:text-stone-600 transition">Artes Marciales</a></li>
             </ul>
         </div>
     </nav>
 
-    <header class="min-h-screen flex flex-col justify-center items-center text-center p-6 zen-gradient border-b border-stone-200">
-        <h1 class="text-4xl md:text-7xl mb-4 text-stone-900 leading-tight tracking-tight uppercase">Maestría en<br>Masaje Japonés</h1>
-        <p class="text-lg md:text-2xl text-stone-600 uppercase tracking-widest mb-8 font-light italic">Anma y Shiatsu Namikoshi</p>
+    <header class="min-h-screen flex flex-col justify-center items-center text-center p-6 hero-zen">
+        <p class="text-stone-500 text-xs tracking-[0.6em] mb-4 font-bold uppercase">Anma • Shiatsu • Zen Stretching</p>
+        <h1 class="text-5xl md:text-8xl font-bold mb-4 tracking-tighter text-stone-900 leading-none">MASAJE<br>JAPONÉS</h1>
         <div class="w-24 h-px bg-stone-300 mb-8"></div>
-        <p class="text-2xl font-semibold mb-12 italic text-stone-800">Gastón Burgos</p>
-        <a href="#programa" class="bg-stone-800 text-white px-10 py-4 uppercase tracking-widest text-[10px] font-bold hover:bg-stone-700 transition shadow-2xl tracking-[0.2em]">Ver Programa Completo</a>
+        <p class="text-lg md:text-xl text-stone-600 max-w-2xl mb-12 font-light italic">"Terapia de rehabilitación y equilibrio bajo la maestría de Gastón Burgos."</p>
+        <div class="flex flex-col md:flex-row gap-4">
+            <button onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})" class="bg-stone-900 text-white px-10 py-4 uppercase font-bold text-[10px] tracking-widest hover:bg-stone-700 transition shadow-xl">Consultar Abonos</button>
+            <button onclick="document.getElementById('diagnostico').scrollIntoView({behavior:'smooth'})" class="bg-white border border-stone-200 text-stone-900 px-10 py-4 uppercase font-bold text-[10px] tracking-widest hover:bg-stone-50 transition">Identificar Dolor</button>
+        </div>
     </header>
 
-    <section id="maestro" class="py-24 px-6 max-w-6xl mx-auto">
-        <div class="grid md:grid-cols-2 gap-16 items-center">
-            <div class="shadow-2xl overflow-hidden rounded-sm border border-stone-200 p-2 bg-white">
-                <img src="https://i.ibb.co/rRdYV7TN/Conoce-al-maestro.png" alt="Gastón Burgos" class="w-full h-auto grayscale hover:grayscale-0 transition duration-700">
-            </div>
+    <section class="py-24 px-6 bg-white border-y border-stone-100">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
             <div>
-                <h2 class="text-4xl mb-6 italic text-stone-800">Gastón Burgos</h2>
-                <h3 class="text-[10px] text-stone-400 mb-8 uppercase tracking-[0.3em] font-bold">Shiatsuterapeuta Namikoshi</h3>
-                <div class="space-y-6 text-stone-600 leading-relaxed font-light text-lg">
-                    <p>• <strong>+20 Años de Trayectoria:</strong> Especialista formado en técnicas antiguas y modernas de salud japonesa.</p>
-                    <p>• <strong>Formación:</strong> Director de Espacio INYO, habiendo transmitido el arte del Shiatsu a más de 100 alumnos.</p>
+                <h2 class="text-3xl mb-8 text-stone-800 italic">Maestría Terapéutica</h2>
+                <p class="text-stone-500 mb-10 text-sm leading-relaxed">No es solo relajación. Es una técnica de rehabilitación milenaria adaptada a la biomecánica moderna. Compará el alcance de mi tratamiento:</p>
+                
+                <div class="flex gap-4 mb-8">
+                    <button onclick="toggleDataset(0)" id="btn-ds0" class="btn-toggle-active border border-stone-200 px-4 py-2 text-[9px] font-bold uppercase tracking-widest transition">Terapia Maestro</button>
+                    <button onclick="toggleDataset(1)" id="btn-ds1" class="btn-toggle-active border border-stone-200 px-4 py-2 text-[9px] font-bold uppercase tracking-widest transition">Masaje Común</button>
+                </div>
+                <div class="p-5 bg-stone-50 border-l-4 border-stone-900">
+                    <p class="text-stone-600 text-xs italic font-bold">"En 2021 fui nombrado Maestro en la Escuela Argentina de Shiatsu. Mi compromiso es tu recuperación real."</p>
+                </div>
+            </div>
+            <div class="chart-container">
+                <canvas id="zenChart"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <section id="diagnostico" class="py-24 px-6 bg-[#fcfaf7]">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl mb-4 italic uppercase">Identificador de Malestar ✨</h2>
+            <p class="text-stone-500 mb-12 font-light text-sm italic">Seleccioná tu zona afectada para conocer el enfoque técnico sugerido.</p>
+            
+            <div class="bg-white p-8 rounded-sm border border-stone-100 text-left shadow-sm">
+                <div class="grid md:grid-cols-2 gap-6 mb-8 text-stone-800">
+                    <div class="flex flex-col">
+                        <label class="text-[10px] uppercase tracking-widest text-stone-400 font-bold mb-2">Zona de Dolor</label>
+                        <select id="input-pain" class="bg-stone-50 border-none rounded-sm p-3 text-sm focus:ring-1 focus:ring-stone-900 italic">
+                            <option value="Cervical / Cuello">Cervical / Cuello</option>
+                            <option value="Lumbar / Espalda Baja">Lumbar / Espalda Baja</option>
+                            <option value="Estrés / Insomnio">Estrés / Insomnio</option>
+                            <option value="Piernas Cansadas">Piernas Cansadas</option>
+                        </select>
+                    </div>
+                    <div class="flex flex-col">
+                        <label class="text-[10px] uppercase tracking-widest text-stone-400 font-bold mb-2">Frecuencia</label>
+                        <select id="input-freq" class="bg-stone-50 border-none rounded-sm p-3 text-sm focus:ring-1 focus:ring-stone-900 italic">
+                            <option value="Dolor Crónico">Crónico (Meses/Años)</option>
+                            <option value="Dolor Agudo">Agudo (Reciente)</option>
+                        </select>
+                    </div>
+                </div>
+                <button onclick="diagnose()" id="btn-diag" class="w-full bg-stone-900 py-4 font-bold uppercase text-[10px] tracking-[0.3em] text-white hover:bg-stone-700 transition">Ver Enfoque Terapéutico</button>
+                <div id="diag-output" class="mt-8"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="py-24 px-6 bg-white">
+        <div class="max-w-6xl mx-auto text-center">
+            <h2 class="text-4xl mb-16 italic font-bold uppercase tracking-tighter text-stone-900">Abonos Terapéuticos 2026</h2>
+            <div class="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+                <div class="bg-stone-50 p-10 border border-stone-100 rounded-sm flex flex-col hover:border-stone-900 transition duration-500">
+                    <h3 class="text-stone-400 font-bold mb-4 italic uppercase">Plan Inicial</h3>
+                    <div class="text-5xl font-bold mb-4 italic text-stone-900">$43.000</div>
+                    <p class="text-[10px] text-stone-500 font-bold uppercase mb-8 italic">Mantenimiento y Alivio</p>
+                    <ul class="text-[11px] text-stone-500 space-y-4 mb-10 text-left flex-grow italic">
+                        <li><i class="fas fa-check text-stone-900 mr-2"></i> Sesiones mensuales de rehabilitación</li>
+                        <li><i class="fas fa-check text-stone-900 mr-2"></i> Seguimiento de evolución clínica</li>
+                        <li><i class="fas fa-check text-stone-900 mr-2"></i> Enfoque en Anma / Shiatsu Namikoshi</li>
+                    </ul>
+                    <a href="https://wa.me/541176194825" class="block border border-stone-900 py-3 text-[10px] font-bold uppercase tracking-widest hover:bg-stone-900 hover:text-white transition italic">Reservar Turno</a>
+                </div>
+                <div class="bg-stone-900 p-10 border-2 border-stone-900 rounded-sm relative transform scale-105 shadow-2xl flex flex-col">
+                    <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-stone-900 text-white text-[9px] px-4 py-1 font-bold uppercase tracking-widest italic border border-stone-700">Alta Recuperación</span>
+                    <h3 class="text-stone-400 font-bold mb-4 italic uppercase">Plan Pleno</h3>
+                    <div class="text-5xl font-bold mb-4 italic text-white">$54.000</div>
+                    <p class="text-stone-400 text-[10px] mb-8 uppercase tracking-widest font-bold italic">Tratamiento de Choque</p>
+                    <ul class="text-[11px] text-stone-300 space-y-4 mb-10 text-left font-bold italic flex-grow">
+                        <li><i class="fas fa-star text-white mr-2"></i> Mayor frecuencia de tratamiento</li>
+                        <li><i class="fas fa-star text-white mr-2"></i> <strong>Bonificación Zen Stretching</strong></li>
+                        <li><i class="fas fa-star text-white mr-2"></i> Rutinas de postura para el hogar</li>
+                    </ul>
+                    <a href="https://wa.me/541176194825" class="block bg-white text-stone-900 py-4 text-[10px] font-bold uppercase tracking-widest hover:bg-stone-200 transition italic">Iniciar Tratamiento</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="programa" class="py-24 px-6 max-w-4xl mx-auto border-t border-stone-200">
-        <h2 class="text-center text-4xl mb-16 italic text-stone-800">Programa Detallado</h2>
-        <div class="space-y-4">
-            <details class="group bg-white border border-stone-200 rounded-sm shadow-sm transition-all duration-300">
-                <summary class="flex justify-between items-center p-8 cursor-pointer group-open:bg-stone-50">
-                    <div>
-                        <span class="text-[9px] uppercase tracking-widest text-stone-400 font-bold block mb-1">Módulo 1 • 18 Horas</span>
-                        <h3 class="text-lg font-bold text-stone-800 tracking-tight uppercase italic">Silla & Zafu: Quick Fix</h3>
-                    </div>
-                    <i class="fas fa-chevron-down text-stone-300 transition-transform"></i>
-                </summary>
-                <div class="p-8 pt-0 text-stone-600 leading-relaxed font-light border-t border-stone-50 text-sm">
-                    Protocolos rápidos para oficina y espacios reducidos. Ideal para aliviar tensiones cervicales y lumbares de forma inmediata.
-                </div>
-            </details>
-            <details class="group bg-white border border-stone-200 rounded-sm shadow-sm transition-all duration-300">
-                <summary class="flex justify-between items-center p-8 cursor-pointer group-open:bg-stone-50">
-                    <div>
-                        <span class="text-[9px] uppercase tracking-widest text-stone-400 font-bold block mb-1">Módulo 2 • 18 Horas</span>
-                        <h3 class="text-lg font-bold text-stone-800 tracking-tight uppercase italic">Posición Lateral</h3>
-                    </div>
-                    <i class="fas fa-chevron-down text-stone-300 transition-transform"></i>
-                </summary>
-                <div class="p-8 pt-0 text-stone-600 leading-relaxed font-light border-t border-stone-50 text-sm">
-                    Técnica fundamental para el tratamiento del nervio ciático y liberación de cadenas laterales.
-                </div>
-            </details>
-            <details class="group bg-white border border-stone-200 rounded-sm shadow-sm transition-all duration-300">
-                <summary class="flex justify-between items-center p-8 cursor-pointer group-open:bg-stone-50">
-                    <div>
-                        <span class="text-[9px] uppercase tracking-widest text-stone-400 font-bold block mb-1">Módulo 3 • 18 Horas</span>
-                        <h3 class="text-lg font-bold text-stone-800 tracking-tight uppercase italic">Posición Prono</h3>
-                    </div>
-                    <i class="fas fa-chevron-down text-stone-300 transition-transform"></i>
-                </summary>
-                <div class="p-8 pt-0 text-stone-600 leading-relaxed font-light border-t border-stone-50 text-sm">
-                    Trabajo profundo en espalda, sacro y miembros inferiores siguiendo los puntos Namikoshi.
-                </div>
-            </details>
-            <details class="group bg-[#F5F1E8] border-2 border-stone-800 rounded-sm shadow-xl transition-all duration-300">
-                <summary class="flex justify-between items-center p-8 cursor-pointer group-open:bg-[#ede8dc]">
-                    <div>
-                        <span class="text-[9px] uppercase tracking-widest text-stone-600 font-bold block mb-1 italic">Módulo 4 • 32 Horas Intensivas</span>
-                        <h3 class="text-lg font-bold text-stone-900 tracking-tight uppercase underline italic">Posición Supino & Hara</h3>
-                    </div>
-                    <i class="fas fa-chevron-down text-stone-900 transition-transform"></i>
-                </summary>
-                <div class="p-8 pt-0 text-stone-800 leading-relaxed font-light border-t border-stone-200/50 text-sm italic">
-                    Anpuku (Hara), Shiatsu craneal y certificación final de la Maestría.
-                </div>
-            </details>
+    <footer class="py-24 px-6 bg-[#fcfaf7] text-center border-t border-stone-100">
+        <h2 class="text-4xl mb-16 italic tracking-tighter uppercase font-bold text-stone-900">Espacio INYO ☯️</h2>
+        <div class="grid md:grid-cols-2 gap-12 mb-20">
+            <div>
+                <img src="https://inyodo.github.io/espacio-inyo-web/imagen/IMG_4931.jpeg" alt="QR" class="w-32 h-32 mx-auto mb-4 object-contain grayscale">
+                <p class="text-[10px] uppercase font-bold text-stone-400">+54 11 7619-4825</p>
+            </div>
+            <div class="flex flex-col justify-center items-center md:items-start text-center md:text-left">
+                <p class="text-xs font-bold uppercase tracking-widest text-stone-900 mb-2">Sede Central</p>
+                <p class="text-xs text-stone-500 italic">Gdor. Carlos Tejedor 335, Lanús Oeste Centro.</p>
+            </div>
         </div>
-    </section>
-
-    <footer id="contacto" class="py-24 px-6 zen-gradient text-center border-t border-stone-200">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-4xl mb-12 italic font-light tracking-tight text-stone-800">Inicia tu formación profesional</h2>
-            
-            <div class="bg-white p-6 shadow-2xl inline-block mb-12 border border-stone-100 rounded-sm">
-                <img src="https://inyodo.github.io/espacio-inyo-web/imagen/IMG_4931.jpeg" alt="QR Contacto WhatsApp" class="w-44 h-44 object-contain">
-                <p class="text-[9px] uppercase tracking-[0.2em] mt-4 text-stone-400 font-bold">Consultas e Inscripciones</p>
-            </div>
-            
-            <div class="space-y-4 mb-16 font-light text-lg text-stone-800">
-                <p class="font-bold underline underline-offset-4 tracking-tighter text-xl">+54 11 7619-4825</p>
-                <p class="text-stone-400 text-[10px] mt-4 uppercase tracking-[0.2em]">Carlos Tejedor 335, Lanús Oeste</p>
-            </div>
-
-            <div class="border-t border-stone-200 pt-16 mt-16">
-                <h3 class="text-[11px] uppercase tracking-[0.5em] text-stone-400 mb-10 font-bold">ECOSISTEMA INYO</h3>
-                <div class="flex flex-wrap justify-center gap-10 italic text-stone-500 text-xs font-light tracking-widest">
-                    <a href="https://inyodo.github.io/hiit-calistenia/" class="hover:text-stone-900 transition underline underline-offset-8 decoration-stone-200">HIIT Calistenia</a>
-                    <a href="https://inyodo.github.io/espacio-inyo-web/yoga.html" class="hover:text-stone-900 transition underline underline-offset-8 decoration-stone-200">Clases de Yoga</a>
-                    <a href="https://inyodo.github.io/espacio-inyo-web/artes-marciales.html" class="hover:text-stone-900 transition underline underline-offset-8 decoration-stone-200">Artes Marciales</a>
-                </div>
-                <p class="mt-24 font-serif text-4xl opacity-5 tracking-tighter italic">Espacio INYO</p>
+        <div class="border-t border-stone-200 pt-16 mt-16">
+            <h3 class="text-[10px] uppercase tracking-[0.6em] text-stone-400 mb-10 font-bold">ECOSISTEMA INYO</h3>
+            <div class="flex flex-wrap justify-center gap-10 italic text-stone-400 text-[10px] font-bold tracking-widest">
+                <a href="https://inyodo.github.io/hiit-calistenia/" class="hover:text-stone-900 transition underline underline-offset-8">HIIT Calistenia</a>
+                <a href="https://inyodo.github.io/espacio-inyo-web/yoga.html" class="hover:text-stone-900 transition underline underline-offset-8">Clases de Yoga</a>
+                <a href="https://inyodo.github.io/espacio-inyo-web/artes-marciales.html" class="hover:text-stone-900 transition underline underline-offset-8">Artes Marciales</a>
             </div>
         </div>
     </footer>
 
-    <a href="https://wa.me/541176194825" 
-       class="fixed bottom-8 right-8 bg-[#25d366] text-white w-14 h-14 rounded-full shadow-2xl flex items-center justify-center text-2xl hover:scale-110 transition-transform z-[100]"
-       target="_blank" 
-       rel="noopener noreferrer"
-       title="Consultar por WhatsApp">
+    <a href="https://wa.me/541176194825" class="fixed bottom-8 right-8 bg-stone-900 text-white w-14 h-14 rounded-full shadow-2xl flex items-center justify-center text-2xl hover:scale-110 transition-transform z-50">
         <i class="fab fa-whatsapp"></i>
     </a>
 
+    <script>
+        let myChart;
+        document.addEventListener('DOMContentLoaded', () => {
+            const ctx = document.getElementById('zenChart').getContext('2d');
+            myChart = new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: ['Alivio Dolor', 'Circulación', 'Salud Mental', 'Flexibilidad', 'Duración Efecto'],
+                    datasets: [
+                        { label: 'Terapia Maestro', data: [100, 90, 95, 85, 95], backgroundColor: 'rgba(45, 45, 45, 0.4)', borderColor: '#2d2d2d', borderWidth: 2 },
+                        { label: 'Masaje Común', data: [60, 70, 60, 40, 30], backgroundColor: 'rgba(168, 162, 158, 0.1)', borderColor: '#a8a29e', borderWidth: 1 }
+                    ]
+                },
+                options: { responsive: true, maintainAspectRatio: false, scales: { r: { grid: { color: 'rgba(0,0,0,0.05)' }, angleLines: { color: 'rgba(0,0,0,0.05)' }, ticks: { display: false }, pointLabels: { font: { size: 10, family: 'Cinzel' }, color: '#78716c' } } }, plugins: { legend: { display: false } } }
+            });
+        });
+
+        function toggleDataset(index) {
+            const meta = myChart.getDatasetMeta(index);
+            meta.hidden = meta.hidden === null ? !myChart.data.datasets[index].hidden : null;
+            document.getElementById(`btn-ds${index}`).classList.toggle('btn-toggle-active');
+            myChart.update();
+        }
+
+        function diagnose() {
+            const out = document.getElementById('diag-output');
+            const pain = document.getElementById('input-pain').value;
+            out.innerHTML = `<div class="bg-stone-50 p-6 border-l-4 border-stone-900 italic text-xs animate-pulse">Analizando zona biomecánica...</div>`;
+            setTimeout(() => {
+                out.innerHTML = `<div class="bg-stone-50 p-6 border-l-4 border-stone-900"><h4 class="text-stone-900 font-bold uppercase text-[10px] mb-2 italic">Enfoque para ${pain}</h4><p class="text-stone-600 text-xs italic mb-2">Aplicaremos técnicas de <strong>Shiatsu Namikoshi</strong> y presión profunda para liberar el sistema nervioso.</p><p class="text-[9px] uppercase tracking-tighter text-stone-400 font-bold">Se recomienda iniciar tratamiento de 4 sesiones.</p></div>`;
+            }, 800);
+        }
+    </script>
 </body>
 </html>
